@@ -31,7 +31,7 @@ func main() {
 	}
 
 	channel := make(chan Counter)
-
+	var lines, words , punctuations ,vowels int
 	chunk := len(fileContent) / goRoutines
 
 	fmt.Printf("File Chunks = %v",goRoutines)
@@ -48,9 +48,17 @@ func main() {
 		fmt.Printf("No of Vowels of Chunk %d: %d \n", i+1, counts.vowelCount)
 		fmt.Printf("No of Punctuation of Chunk %d: %d \n", i+1, counts.punctuationCount)
 		fmt.Printf("\n\n")
+			lines = lines + counts.lineCount
+			words = words+ counts.wordCount
+			vowels = vowels + counts.vowelCount
+			punctuations =  punctuations +counts.punctuationCount
 	}
 
 	fmt.Printf("Execution time: %v\n", time.Since(startTime))
+	fmt.Printf("Total Num of Lines: %v\n", lines)
+	fmt.Printf("Total Num of Words: %v\n", words)
+	fmt.Printf("Total Num if Vowels: %v\n", vowels)
+	fmt.Printf("total Num of Punctuations: %v\n", punctuations)
 
 
 }
